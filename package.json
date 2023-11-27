@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/bcrypt": "^5.0.2",
     "bcrypt": "^5.1.1",
     "mysql2": "^3.6.5",
     "next": "14.0.3",
