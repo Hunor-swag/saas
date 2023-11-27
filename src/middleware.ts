@@ -9,6 +9,7 @@ export async function middleware(req: NextRequest) {
   const domain = getDomain(host);
 
   const subdomain = getValidSubdomain(host);
+  console.log("dev domain: ", domain);
   console.log("dev subdomain: ", subdomain);
 
   if (domain && subdomain && subdomain !== "www") {

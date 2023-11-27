@@ -1,0 +1,62 @@
+{
+	"header": {
+		"profileDropdown": {
+			"profile": {
+				"label": "Profil"
+			},
+			"signOut": {
+				"label": "Kijelentkezés"
+			}
+		},
+		"masterDataDropdown":{
+			"title": "Törzsadatok",
+			"users": {
+				"label": "Felhasználók"
+			}
+		}
+	},
+	"users": {
+		"table":{
+			"addButtonText": "Hozzáadás",
+			"editButtonText": "Módosítás",
+			"deleteButtonText": "Törlés",
+			"tableHeaders": ["ID", "Email", "Keresztnév", "Vezetéknév"],
+			"editTitle": "Felhasználó módosítása",
+			"addTitle": "Felhasználó hozzáadása",
+			"deleteItemProps": {
+				"title": "Felhasználó törlése",
+				"description": "Biztos vagy benne, hogy törölni szeretnéd ezt a felhasználót?",
+				"button1": {
+					"text": "Mégsem"},
+				"button2": {
+					"text": "Törlés"
+				}
+			}
+		},
+		"addUserForm":{
+			"emailLabel": "Email",
+			"firstnameLabel": "Keresztnév",
+			"lastnameLabel": "Vezetéknév",
+			"passwordLabel": "Jelszó",
+			"passwordRepeatLabel": "Jelszó újra",
+			"submitButtonText": "Mentés"
+		},
+		"editUserForm":{
+			"firstnameLabel": "Keresztnév",
+			"lastnameLabel": "Vezetéknév",
+			"passwordLabel": "Jelszó",
+			"passwordRepeatLabel": "Jelszó újra",
+			"submitButtonText": "Mentés"
+		}
+	},
+	"profile": {
+		"editProfileTitle": "Profil szerkesztése",
+		"editProfileForm": {
+			"firstnameLabel": "Keresztnév",
+			"lastnameLabel": "Vezetéknév",
+			"passwordLabel": "Jelszó",
+			"passwordRepeatLabel": "Jelszó újra",
+			"submitButtonText": "Mentés"
+		}
+	}
+}

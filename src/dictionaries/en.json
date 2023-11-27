@@ -1,0 +1,62 @@
+{
+	"header": {
+		"profileDropdown": {
+			"profile": {
+				"label": "Profile"
+			},
+			"signOut": {
+				"label": "Sign Out"
+			}
+		},
+		"masterDataDropdown":{
+			"title": "Master Data",
+			"users": {
+				"label": "Users"
+			}
+		}
+	},
+	"users": {
+		"table":{
+			"addButtonText": "Add",
+			"editButtonText": "Edit",
+			"deleteButtonText": "Delete",
+			"tableHeaders": ["ID", "Email", "Firstname", "Lastname"],
+			"editTitle": "Edit User",
+			"addTitle": "Add User",
+			"deleteItemProps": {
+				"title": "Delete User",
+				"description": "Are you sure you want to delete this user?",
+				"button1": {
+					"text": "Cancel"},
+				"button2": {
+					"text": "Delete"
+				}
+			}
+		},
+		"addUserForm":{
+			"emailLabel": "Email",
+			"firstnameLabel": "Firstname",
+			"lastnameLabel": "Lastname",
+			"passwordLabel": "Password",
+			"passwordRepeatLabel": "Repeat password",
+			"submitButtonText": "Save"
+		},
+		"editUserForm":{
+			"firstnameLabel": "Firstname",
+			"lastnameLabel": "Lastname",
+			"passwordLabel": "Password",
+			"passwordRepeatLabel": "Repeat password",
+			"submitButtonText": "Submit"
+		}
+	},
+	"profile": {
+		"editProfileTitle": "Edit Profile",
+		"editProfileForm": {
+			"firstnameLabel": "Firstname",
+			"lastnameLabel": "Lastname",
+			"passwordLabel": "Password",
+			"passwordRepeatLabel": "Repeat password",
+			"submitButtonText": "Save"
+		}
+	}
+}
