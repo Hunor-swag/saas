@@ -9,7 +9,11 @@ import { toast } from "react-toastify";
 import { usePathname, useRouter } from "next/navigation";
 import { useAppSelector } from "@/redux/store";
 
-export default function LoginForm() {
+type Props = {
+	callbackUrl: string;
+};
+
+export default function LoginForm({ callbackUrl }: Props) {
 	const {
 		register,
 		handleSubmit,
@@ -20,16 +24,12 @@ export default function LoginForm() {
 
 	const subdomain = useAppSelector((state) => state.subdomainReducer.subdomain);
 
-	//   console.log(errors);
-
 	async function onSubmit(data: any) {
 		const user = await signIn("credentials", {
 			email: data.email,
 			password: data.password,
 			redirect: false,
 		});
-
-		// console.log(user);
 
 		if (user?.error) {
 			toast.error("Invalid email or password", {
@@ -50,7 +50,7 @@ export default function LoginForm() {
 				},
 			});
 
-			router.push(`/home`);
+			router.push(callbackUrl);
 		}
 	}
 

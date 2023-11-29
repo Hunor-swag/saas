@@ -2,7 +2,7 @@ import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import * as bcrypt from "bcrypt";
 import { getUserById } from "@/lib/getUser";
-import { getValidSubdomain } from "@/lib/url";
+import { getDomain, getFullUrl, getValidSubdomain } from "@/lib/url";
 
 export const authOptions = {
 	// Configure one or more authentication providers
@@ -22,21 +22,19 @@ export const authOptions = {
 
 			async authorize(credentials, req) {
 				try {
-					const subdomain = getValidSubdomain(req.headers?.host);
-					const user = await fetch(
-						`https://${subdomain}.${process.env.NEXT_PUBLIC_DOMAIN}/api/auth/user`,
-						{
-							method: "POST",
-							body: JSON.stringify({ email: credentials?.email }),
-							headers: { "Content-Type": "application/json" },
-						}
-					).then((res) => (res.ok ? res.json() : null));
-
+					const url = getFullUrl(req.headers?.host);
+					console.log(url);
+					const user = await fetch(`${url}/api/auth/user`, {
+						method: "POST",
+						body: JSON.stringify({ email: credentials?.email }),
+						headers: { "Content-Type": "application/json" },
+					}).then((res) => (res.ok ? res.json() : null));
+					console.log(user);
 					if (!user) {
 						return null;
 					}
 
-					// console.log(credentials?.password, user.password);
+					console.log(credentials?.password, user.password);
 
 					const isMatch = await bcrypt.compare(
 						credentials?.password as string | Buffer,
@@ -77,7 +75,7 @@ export const authOptions = {
 		async session({ session, token, user }: any) {
 			session.user.id = token.sub;
 			session.user.role = token.role;
-			session.user.lang = token.lang;
+			session.user.lang = token.lang || "en";
 			return session;
 		},
 		async redirect({ url, baseUrl }: any) {

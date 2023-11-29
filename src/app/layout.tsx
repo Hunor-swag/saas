@@ -5,14 +5,14 @@ import "react-toastify/dist/ReactToastify.css";
 import { NextAuthProvider } from "@/components/NextAuthProvider";
 import { ReduxProvider } from "@/redux/provider";
 import { getServerSession } from "next-auth/next";
-import { authOptions } from "./api/ceodash/auth/[...nextauth]/route";
+import { authOptions } from "./api/auth/[...nextauth]/route";
 
-export default function RootLayout({
+export default async function RootLayout({
 	children,
 }: {
 	children: React.ReactNode;
 }) {
-	const session = getServerSession(authOptions);
+	const session = await getServerSession(authOptions);
 
 	return (
 		<html lang='en'>

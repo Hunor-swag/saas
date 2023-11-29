@@ -3,6 +3,7 @@ import EditProfileForm from "@/components/dashboard/edit-profile/EditProfileForm
 import { getUserById } from "@/lib/getUser";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
+import { headers } from "next/headers";
 
 export default async function ProfilePage() {
 	const session = await getServerSession(authOptions);
@@ -11,7 +12,7 @@ export default async function ProfilePage() {
 		redirect("/");
 	}
 
-	const user = await getUserById(session.user.id);
+	const user = await getUserById(session.user.id, headers().get("host")!);
 
 	return (
 		<div>
