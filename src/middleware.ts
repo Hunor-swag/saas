@@ -22,6 +22,8 @@ export async function middleware(req: NextRequest) {
 		return NextResponse.rewrite(new URL(`/not-found`, req.url));
 	}
 
+	console.log(url.href);
+
 	return NextResponse.rewrite(url);
 }
 export const config = {
