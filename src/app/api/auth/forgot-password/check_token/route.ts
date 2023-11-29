@@ -1,14 +1,18 @@
 import { query } from "@/lib/db";
+import { getValidSubdomain } from "@/lib/url";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
 	try {
 		const { token } = await req.json();
+		const subdomain = getValidSubdomain(req.headers.get("host"));
 
 		// check if token exists
 
 		const tokenQueryString = "SELECT * FROM password_recovery WHERE id = ?";
-		const tokenResult = (await query(tokenQueryString, [token])) as Array<{
+		const tokenResult = (await query("ceodash_" + subdomain, tokenQueryString, [
+			token,
+		])) as Array<{
 			id: string;
 			user_id: number;
 			expiration_date: Date;
