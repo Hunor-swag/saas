@@ -29,7 +29,7 @@ export default function ResetPasswordForm({ token }: { token: string }) {
 		}
 
 		setIsSubmitting(true);
-		const url = getFullUrl(window.location.hostname);
+		const url = window.location.origin;
 
 		const res = await fetch(`${url}/api/auth/forgot-password/change`, {
 			method: "PUT",

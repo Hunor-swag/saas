@@ -27,18 +27,17 @@ export default function ForgotPasswordForm() {
 
 		setIsSubmitting(true);
 
-		const res = await fetch(
-			`${process.env.NEXT_PUBLIC_API_URL}/api/auth/forgot-password`,
-			{
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify({
-					email: formdata.email,
-				}),
-			}
-		);
+		const url = window.location.origin;
+
+		const res = await fetch(`${url}/api/auth/forgot-password`, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				email: formdata.email,
+			}),
+		});
 
 		const data = await res.json();
 
