@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 import { emailContent } from "./html";
 
 import * as bcrypt from "bcrypt";
-import { getSystemName, getValidSubdomain } from "@/lib/url";
+import { getFullUrl, getSystemName, getValidSubdomain } from "@/lib/url";
 import { query } from "@/lib/db";
 const mailgun = require("mailgun-js");
 
@@ -75,7 +75,8 @@ export async function POST(req: NextRequest) {
 		// console.log(api_key, domain);
 		const mg = mailgun({ apiKey: api_key, domain: domain, host: host });
 
-		const link = `https://${subdomain}.${process.env.NEXT_PUBLIC_DOMAIN}/email-verification/${uuid}`;
+		const url = getFullUrl(req.headers.get("host"));
+		const link = `${url}/email-verification/${uuid}`;
 
 		const data = {
 			from: "Authentication System <noreply@authentication-system.com>",
