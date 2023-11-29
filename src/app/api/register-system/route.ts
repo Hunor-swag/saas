@@ -91,9 +91,9 @@ export async function POST(req: NextRequest) {
 		lastname VARCHAR(255) NOT NULL,
 		email VARCHAR(255) NOT NULL UNIQUE,
 		password VARCHAR(255) NOT NULL,
-    role VARCHAR(255) NOT NULL,
-    lang VARCHAR(255) NOT NULL
-	)`;
+		role VARCHAR(255) DEFAULT 'user' NOT NULL,
+		lang VARCHAR(255) DEFAULT 'en' NOT NULL
+		)`;
 		const createUsersTableRes = await query(nameSlug, createUsersTable, []);
 
 		const createEmailVerificationsTable = `CREATE TABLE email_verifications(
