@@ -14,7 +14,7 @@ export async function middleware(req: NextRequest) {
 		url.pathname = `/${domain}/${subdomain}${url.pathname}`;
 	}
 
-	if (domain && !subdomain) {
+	if (domain && (!subdomain || subdomain === "www")) {
 		url.pathname = `/${domain}${url.pathname}`;
 	}
 
