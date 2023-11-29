@@ -34,7 +34,7 @@ export const authOptions = {
 						return null;
 					}
 
-					console.log(credentials?.password, user.password);
+					// console.log(credentials?.password, user.password);
 
 					const isMatch = await bcrypt.compare(
 						credentials?.password as string | Buffer,

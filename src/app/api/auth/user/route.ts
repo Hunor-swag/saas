@@ -8,7 +8,7 @@ export async function POST(req: NextRequest) {
 		const { email } = await req.json();
 		const hostname = req.headers.get("host");
 		const subdomain = getValidSubdomain(hostname);
-		console.log(email, subdomain);
+		// console.log(email, subdomain);
 
 		const queryString = `SELECT * FROM users WHERE email = ?`;
 		const res = (await query("ceodash_" + subdomain, queryString, [
