@@ -30,22 +30,19 @@ export default function SignupForm() {
 
 		const url = getFullUrl(window.location.hostname);
 
-		const res = await fetch(
-			`${process.env.NEXT_PUBLIC_API_URL}/api/auth/sign-up/email-verification`,
-			{
-				method: "POST",
-				body: JSON.stringify({
-					email: formdata.email,
-					password: formdata.password,
-					repeat_password: formdata.repeat_password,
-					firstname: formdata.firstname,
-					lastname: formdata.lastname,
-				}),
-				headers: {
-					"Content-Type": "application/json",
-				},
-			}
-		);
+		const res = await fetch(`${url}/api/auth/sign-up/email-verification`, {
+			method: "POST",
+			body: JSON.stringify({
+				email: formdata.email,
+				password: formdata.password,
+				repeat_password: formdata.repeat_password,
+				firstname: formdata.firstname,
+				lastname: formdata.lastname,
+			}),
+			headers: {
+				"Content-Type": "application/json",
+			},
+		});
 
 		const data = await res.json();
 
