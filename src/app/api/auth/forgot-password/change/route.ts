@@ -1,7 +1,7 @@
 import { query } from "@/lib/db";
 import { NextRequest, NextResponse } from "next/server";
 import * as bcrypt from "bcrypt";
-import { getValidSubdomain } from "@/lib/url";
+import { getFullUrl, getValidSubdomain } from "@/lib/url";
 
 export async function PUT(req: NextRequest) {
 	try {
@@ -10,8 +10,10 @@ export async function PUT(req: NextRequest) {
 
 		// check if token is expired
 
+		const url = getFullUrl(req.headers.get("host"));
+
 		const validToken = await fetch(
-			`${process.env.NEXT_PUBLIC_API_URL}/api/auth/forgot-password/check_token`,
+			`${url}/api/auth/forgot-password/check_token`,
 			{
 				method: "POST",
 				headers: { "Content-Type": "application/json" },

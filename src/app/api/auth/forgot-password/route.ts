@@ -4,7 +4,7 @@ import { NextRequest, NextResponse } from "next/server";
 const { v4: uuidv4 } = require("uuid");
 const mailgun = require("mailgun-js");
 import { emailContent } from "./html";
-import { getValidSubdomain } from "@/lib/url";
+import { getFullUrl, getValidSubdomain } from "@/lib/url";
 
 export async function POST(req: NextRequest) {
 	try {
@@ -52,7 +52,8 @@ export async function POST(req: NextRequest) {
 		const host = process.env.MAILGUN_HOST;
 		// console.log(api_key, domain);
 		const mg = mailgun({ apiKey: api_key, domain: domain, host: host });
-		const link = `${process.env.NEXT_PUBLIC_API_URL}/reset-password?token=${uuid}`;
+		const url = getFullUrl(req.headers.get("host"));
+		const link = `${url}/reset-password?token=${uuid}`;
 
 		const data = {
 			from: "Authentication System <noreply@authentication-system.com>",
