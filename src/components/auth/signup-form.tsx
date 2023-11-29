@@ -9,7 +9,6 @@ import { displayToastAfterFetch } from "@/lib/toasts";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { getFullUrl } from "@/lib/url";
-import { headers } from "next/headers";
 
 export default function SignupForm() {
 	const {
@@ -29,7 +28,7 @@ export default function SignupForm() {
 
 		setIsSubmitting(true);
 
-		const url = getFullUrl(headers().get("host"));
+		const url = getFullUrl(window.location.hostname);
 
 		const res = await fetch(
 			`${process.env.NEXT_PUBLIC_API_URL}/api/auth/sign-up/email-verification`,
