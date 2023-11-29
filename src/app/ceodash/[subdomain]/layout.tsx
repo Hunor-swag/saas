@@ -36,7 +36,7 @@ export default async function Layout({
 	const hostname = headers().get("host");
 	const url = getFullUrl(hostname);
 	const subdomain = getValidSubdomain(hostname);
-	console.log(`${url}/api/ceodash/systems/${hostname}`);
+	console.log(`${url}/api/ceodash/systems/${subdomain}`);
 
 	const getSystem = async () => {
 		const res = await fetch(`${url}/api/ceodash/systems/${subdomain}`);
@@ -48,6 +48,7 @@ export default async function Layout({
 	};
 
 	const system = await getSystem();
+	console.log(system);
 
 	if (!system) {
 		return <div>System not found!</div>;
