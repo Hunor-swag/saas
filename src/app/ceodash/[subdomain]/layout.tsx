@@ -1,5 +1,7 @@
+import { getFullUrl } from "@/lib/url";
 import { SystemType } from "@/types/typings";
 import { Metadata, ResolvingMetadata } from "next";
+import { headers } from "next/headers";
 
 type Props = {
 	params: { subdomain: string };
@@ -13,14 +15,41 @@ export async function generateMetadata(
 	const subdomain = params.subdomain;
 	// fetch data
 	const res = await fetch(
-		`${process.env.NEXT_PUBLIC_URL}/api/ceodash/systems/${subdomain}`
+		`https://ceodash.hu/api/ceodash/systems/${subdomain}`
 	);
+	if (res.status !== 200) {
+		return {
+			title: "404",
+		};
+	}
 	const system = (await res.json()) as SystemType;
 	return {
 		title: system.name,
 	};
 }
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default async function Layout({
+	children,
+}: {
+	children: React.ReactNode;
+}) {
+	const hostname = headers().get("host");
+	const url = getFullUrl(hostname);
+
+	const getSystem = async () => {
+		const res = await fetch(`${url}/api/ceodash/systems/${hostname}`);
+		if (res.status !== 200) {
+			return null;
+		}
+		const system = (await res.json()) as SystemType;
+		return system;
+	};
+
+	const system = await getSystem();
+
+	if (!system) {
+		return <div>System not found!</div>;
+	}
+
 	return <>{children}</>;
 }

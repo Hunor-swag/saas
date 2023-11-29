@@ -54,8 +54,6 @@ export const getTopLevelDomain = (host?: string | null) => {
 };
 
 export const getFullUrl = (host?: string | null) => {
-	const url = `https://${getValidSubdomain(host)}.${getDomain(
-		host
-	)}.${getTopLevelDomain(host)}`;
+	const url = `https://${host}`;
 	return url;
 };

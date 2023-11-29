@@ -13,6 +13,15 @@ export async function GET(
 			params.slug,
 		])) as Array<SystemType>;
 
+		if (result.length === 0) {
+			return new NextResponse(JSON.stringify({ message: "System not found" }), {
+				status: 404,
+				headers: {
+					"Content-Type": "application/json",
+				},
+			});
+		}
+
 		return new NextResponse(JSON.stringify(result[0]), {
 			status: 200,
 			headers: {
