@@ -37,11 +37,11 @@ export async function POST(req: NextRequest) {
 			"INSERT INTO password_recovery (id, user_id, expiration_date) VALUES (?, ?, ?)";
 		const expiration_date = new Date();
 		expiration_date.setMinutes(expiration_date.getMinutes() + 10);
-		const passwordRecoveryResult = await query(passwordRecoveryQueryString, [
-			uuid,
-			user_id,
-			expiration_date,
-		]);
+		const passwordRecoveryResult = await query(
+			"ceodash_" + subdomain,
+			passwordRecoveryQueryString,
+			[uuid, user_id, expiration_date]
+		);
 
 		// console.log(passwordRecoveryResult);
 
