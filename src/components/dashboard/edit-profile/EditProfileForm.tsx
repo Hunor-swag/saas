@@ -1,10 +1,10 @@
 "use client";
 
-import Button from "@/components/ui/Button";
-import TextInput from "@/components/ui/TextInput";
-import { displayToastAfterFetch } from "@/lib/displayToast";
+import Button from "@/components/ui/button";
+import TextInput from "@/components/ui/text-input";
 import { getDictionary } from "@/lib/getDictionary";
 import { getLang } from "@/lib/getLang";
+import { displayToastAfterFetch } from "@/lib/toasts";
 import { User } from "@/types/typings";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
