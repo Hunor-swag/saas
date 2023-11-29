@@ -35,6 +35,7 @@ export default async function Layout({
 }) {
 	const hostname = headers().get("host");
 	const url = getFullUrl(hostname);
+	console.log(`${url}/api/ceodash/systems/${hostname}`);
 
 	const getSystem = async () => {
 		const res = await fetch(`${url}/api/ceodash/systems/${hostname}`);
