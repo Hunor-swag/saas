@@ -75,7 +75,7 @@ export const authOptions = {
 		async session({ session, token, user }: any) {
 			session.user.id = token.sub;
 			session.user.role = token.role;
-			session.user.lang = token.lang || "en";
+			session.user.lang = token.lang;
 			return session;
 		},
 		async redirect({ url, baseUrl }: any) {
