@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
-import { authOptions } from "../../[...nextauth]/route";
 import { query } from "@/lib/db";
 import { getValidSubdomain } from "@/lib/url";
+import { authOptions } from "../../[...nextauth]/authOptions";
 
 export async function GET(req: NextRequest) {
 	try {

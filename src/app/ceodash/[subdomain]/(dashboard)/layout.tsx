@@ -2,8 +2,8 @@ import { redirect } from "next/navigation";
 import { getServerSession } from "next-auth";
 import { getUserById } from "@/lib/getUser";
 import Header from "@/components/header/Header";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { headers } from "next/headers";
+import { authOptions } from "@/app/api/auth/[...nextauth]/authOptions";
 
 export default async function DashboardLayout({
 	children,

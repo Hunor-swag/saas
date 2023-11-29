@@ -5,7 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { NextAuthProvider } from "@/components/NextAuthProvider";
 import { ReduxProvider } from "@/redux/provider";
 import { getServerSession } from "next-auth/next";
-import { authOptions } from "./api/auth/[...nextauth]/route";
+import { authOptions } from "./api/auth/[...nextauth]/authOptions";
 
 export default async function RootLayout({
 	children,

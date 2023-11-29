@@ -1,4 +1,4 @@
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/app/api/auth/[...nextauth]/authOptions";
 import AddUserForm from "@/components/dashboard/users/add-user-form";
 import EditUserForm from "@/components/dashboard/users/edit-user-form";
 import DataTable from "@/components/table/DataTable";

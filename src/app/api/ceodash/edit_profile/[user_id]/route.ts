@@ -2,8 +2,8 @@ import { getServerSession } from "next-auth";
 import { NextRequest, NextResponse } from "next/server";
 import * as bcrypt from "bcrypt";
 import { query } from "@/lib/db";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { getValidSubdomain } from "@/lib/url";
+import { authOptions } from "@/app/api/auth/[...nextauth]/authOptions";
 
 export async function PUT(
 	req: NextRequest,

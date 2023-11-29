@@ -1,9 +1,9 @@
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import EditProfileForm from "@/components/dashboard/edit-profile/EditProfileForm";
 import { getUserById } from "@/lib/getUser";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import { headers } from "next/headers";
+import { authOptions } from "@/app/api/auth/[...nextauth]/authOptions";
 
 export default async function ProfilePage() {
 	const session = await getServerSession(authOptions);
