@@ -1,4 +1,4 @@
-import { getFullUrl } from "@/lib/url";
+import { getFullUrl, getValidSubdomain } from "@/lib/url";
 import { SystemType } from "@/types/typings";
 import { Metadata, ResolvingMetadata } from "next";
 import { headers } from "next/headers";
@@ -35,10 +35,11 @@ export default async function Layout({
 }) {
 	const hostname = headers().get("host");
 	const url = getFullUrl(hostname);
+	const subdomain = getValidSubdomain(hostname);
 	console.log(`${url}/api/ceodash/systems/${hostname}`);
 
 	const getSystem = async () => {
-		const res = await fetch(`${url}/api/ceodash/systems/${hostname}`);
+		const res = await fetch(`${url}/api/ceodash/systems/${subdomain}`);
 		if (res.status !== 200) {
 			return null;
 		}
