@@ -16,8 +16,6 @@ export default async function DashboardLayout({
 		redirect("/");
 	}
 
-	console.log(session);
-
 	const hostname = headers().get("host");
 
 	const user = await getUserById(session.user.id, hostname!);
