@@ -1,6 +1,7 @@
 "use client";
 
 import { displayToastAfterFetch } from "@/lib/toasts";
+import { getFullUrl } from "@/lib/url";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -14,15 +15,13 @@ export default function EmailVerificationPage({
 	const { token } = params;
 
 	const signUp = () => {
-		const res = fetch(
-			`${process.env.NEXT_PUBLIC_API_URL}/api/auth/sign-up/${token}`,
-			{
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-				},
-			}
-		).then((res) => {
+		const url = getFullUrl(window.location.hostname);
+		const res = fetch(`${url}/api/auth/sign-up/${token}`, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+		}).then((res) => {
 			res.json().then((data) => {
 				displayToastAfterFetch(res, data, () => {
 					setTimeout(() => {

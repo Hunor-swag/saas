@@ -4,7 +4,7 @@ import { headers } from "next/headers";
 export default function SubdomainPage() {
 	const hostname = headers().get("host");
 
-	console.log(hostname);
+	// console.log(hostname);
 	const subdomain = getValidSubdomain(hostname);
 
 	return <div>{subdomain} page</div>;

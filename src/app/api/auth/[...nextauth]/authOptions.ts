@@ -23,13 +23,13 @@ export const authOptions = {
 			async authorize(credentials, req) {
 				try {
 					const url = getFullUrl(req.headers?.host);
-					console.log(url);
+					// console.log(url);
 					const user = await fetch(`${url}/api/auth/user`, {
 						method: "POST",
 						body: JSON.stringify({ email: credentials?.email }),
 						headers: { "Content-Type": "application/json" },
 					}).then((res) => (res.ok ? res.json() : null));
-					console.log(user);
+					// console.log(user);
 					if (!user) {
 						return null;
 					}
