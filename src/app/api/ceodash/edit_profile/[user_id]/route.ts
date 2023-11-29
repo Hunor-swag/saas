@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 import * as bcrypt from "bcrypt";
 import { query } from "@/lib/db";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { getValidSubdomain } from "@/lib/url";
 
 export async function PUT(
 	req: NextRequest,
@@ -12,6 +13,8 @@ export async function PUT(
 		const { firstname, lastname, password, repeat_password } = await req.json();
 
 		const { user_id } = params;
+
+		const subdomain = getValidSubdomain(req.headers.get("host"));
 
 		const session = await getServerSession(authOptions);
 
@@ -55,7 +58,7 @@ export async function PUT(
 			editProfileQuery = `UPDATE users 
                 SET firstname = ?, lastname = ?, password = ?
                 WHERE id = ?`;
-			await query(editProfileQuery, [
+			await query("ceodash_" + subdomain, editProfileQuery, [
 				firstname,
 				lastname,
 				hashedPassword,
@@ -65,7 +68,11 @@ export async function PUT(
 			editProfileQuery = `UPDATE users 
                 SET firstname = ?, lastname = ?
                 WHERE id = ?`;
-			await query(editProfileQuery, [firstname, lastname, user_id]);
+			await query("ceodash_" + subdomain, editProfileQuery, [
+				firstname,
+				lastname,
+				user_id,
+			]);
 		}
 
 		return new NextResponse(JSON.stringify({ message: "Profile updated" }), {
