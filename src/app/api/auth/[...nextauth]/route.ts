@@ -4,7 +4,7 @@ import * as bcrypt from "bcrypt";
 import { getUserById } from "@/lib/getUser";
 import { getDomain, getFullUrl, getValidSubdomain } from "@/lib/url";
 
-const authOptions = {
+export const authOptions = {
 	// Configure one or more authentication providers
 
 	providers: [
