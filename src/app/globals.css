@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@layer components {
+	.th {
+		@apply py-2 px-3 text-gray-600 font-semibold text-sm text-left;
+	}
+	td {
+		@apply py-2 px-3 text-gray-600 text-sm font-normal;
+	}
+}
